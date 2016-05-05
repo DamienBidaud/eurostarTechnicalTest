@@ -29,7 +29,6 @@
     };
 
     var calculeTotal = function(index, baskets){
-        console.log(index);
       if(baskets[index].id==1){
           return milkDiscount(baskets[index]);
       }else if(baskets[index].id==2){
@@ -40,8 +39,9 @@
     };
 
     var milkDiscount = function(product){
-        if(product.id==1 && product.quantity%4==0){
-            return (product.quantity-(product.quantity/4))*product.price;
+        if(product.id==1 && product.quantity>=4){
+            var numberDiscount = parseInt(product.quantity/4)
+            return (product.quantity-numberDiscount)*product.price;
         }
         return product.quantity*product.price;
     };
@@ -103,6 +103,8 @@
                 $scope.baskets[index].total= calculeTotal(index, $scope.baskets);
             }else{
                 $scope.baskets.push(product);
+                index = $scope.baskets.indexOf(product);
+                $scope.baskets[index].total= calculeTotal(index, $scope.baskets);
             }
         };
 
@@ -141,7 +143,7 @@
             }
             return total;
         }
-        
+
     }]);
 
 
