@@ -5,6 +5,10 @@
 
     var basket = angular.module("basketApp", []);
 
+    basket.factory("baskets", function(){
+       return [];
+    });
+
     var productController = function(){
         var ctrl = this;
 
@@ -25,13 +29,11 @@
     });
 
 
-    basket.controller("productsCtrl",  ["$log", "$scope", "$http", function($log, $scope, $http){
+    basket.controller("productsCtrl",  ["$log", "$scope", "$http","baskets", function($log, $scope, $http, baskets){
         $scope.products = [];
-        $scope.baskets = [];
+        $scope.baskets = baskets;
         $scope.add = function(product){
-            $log.info(product);
             $scope.baskets.push(product);
-            $log.info($scope.baskets);
         };
 
         $http.get("resource/products.json").then(function(data){
@@ -42,8 +44,8 @@
         });
     }]);
 
-    basket.controller("basketCtrl", ["$scope", "$log", function($scope, $log){
-        //$log.info($scope.baskets);
+    basket.controller("basketCtrl", ["$scope", "$log","baskets", function($scope, $log, baskets){
+        $scope.baskets = baskets;
     }]);
 
 

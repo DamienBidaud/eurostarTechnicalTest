@@ -15,7 +15,22 @@
             <div ng-controller="basketCtrl" class="col-md-4">
                 <h3>My basket</h3>
                 <div class="row" ng-repeat="basket in baskets">
-                    <p>dskql</p>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{basket.name}}
+                            </div>
+                            <div class="col-md-6">
+                                £{{basket.price}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                Quantity:{{basket.quantity}}
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
                 </div>
             </div>
         </div>
