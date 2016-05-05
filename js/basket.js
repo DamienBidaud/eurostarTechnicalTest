@@ -68,6 +68,11 @@
                 $scope.baskets[index].quantity--;
             }
         };
+
+        $scope.getTotalProduct = function (index) {
+            var product =$scope.baskets[index];
+            return (product.quantity*product.price).toFixed(2);
+        }
     }]);
 
 
