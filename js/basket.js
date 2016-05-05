@@ -38,6 +38,7 @@
             var index = $scope.baskets.indexOf(product);
             if(index>=0){
                 $scope.baskets[index].quantity++;
+                $scope.baskets[index].total= $scope.baskets[index].quantity*$scope.baskets[index].price;
             }else{
                 $scope.baskets.push(product);
             }
@@ -59,6 +60,7 @@
 
         $scope.addItem = function(index){
             $scope.baskets[index].quantity++;
+            $scope.baskets[index].total = $scope.baskets[index].quantity*$scope.baskets[index].price;
         };
 
         $scope.removeItem = function(index){
@@ -66,13 +68,18 @@
                 $scope.baskets.splice(index, 1);
             }else{
                 $scope.baskets[index].quantity--;
+                $scope.baskets[index].total = $scope.baskets[index].quantity*$scope.baskets[index].price;
             }
         };
 
-        $scope.getTotalProduct = function (index) {
-            var product =$scope.baskets[index];
-            return (product.quantity*product.price).toFixed(2);
+        $scope.getTotal = function(){
+            var total = 0;
+            for (var i = 0; i < $scope.baskets.length;i++){
+                total += $scope.baskets[i].total;
+            }
+            return total;
         }
+        
     }]);
 
 

@@ -37,10 +37,18 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                Total=£{{getTotalProduct($index)}}
+                                Total=£{{basket.total|number:2}}
                             </div>
                         </div>
                         <hr>
+                    </div>
+                </div>
+                <div class="row" ng-if="baskets.length>0">
+                    <div class="col-md-6">
+                        <b>Total:</b>
+                    </div>
+                    <div class="col-md-6">
+                        <b>{{getTotal()|number:2}}</b>
                     </div>
                 </div>
             </div>

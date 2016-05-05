@@ -3,18 +3,21 @@
     "id":0,
     "name":"Butter",
     "price":0.80,
-    "quantity":1
+    "quantity":1,
+    "total":0.80
   },
   {
     "id":1,
     "name":"Milk",
     "price":1.15,
-    "quantity":1
+    "quantity":1,
+    "total":1.15
   },
   {
     "id":2,
     "name":"Bread",
     "price":1.00,
-    "quantity":1
+    "quantity":1,
+    "total":1.00
   }
 ]
