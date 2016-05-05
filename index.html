@@ -3,9 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Eurostar technical test</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
+    <div ng-app="basketApp" class="container">
+        <div class="row">
+            <div ng-controller="productsCtrl" class="col-md-8">
+                <h3>Products</h3>
+                <div class="row">
 
+                </div>
+            </div>
+            <div ng-controller="basketCtrl" class="col-md-4">
+                <h3>My basket</h3>
+            </div>
+        </div>
+    </div>
+<script src="js/jquery-1.12.3.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/angular.min.js"></script>
+<script type="application/javascript" src="js/basket.js"></script>
 </body>
 </html>
