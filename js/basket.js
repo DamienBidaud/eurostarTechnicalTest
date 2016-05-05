@@ -9,6 +9,9 @@
        return [];
     });
 
+    /**
+     * controller for the product component
+     */
     var productController = function(){
         var ctrl = this;
 
@@ -17,6 +20,9 @@
         }
     };
 
+    /**
+     * controller for the basket component
+     */
     var basketController = function(){
         var ctrl = this;
 
@@ -33,6 +39,11 @@
         };
     };
 
+    /**
+     * check if there is exist a discount for the bread
+     * @param baskets
+     * @returns {boolean}
+     */
     var asBreadDiscount = function(baskets){
         for(var i = 0; i < baskets.length; i++){
             if(baskets[i].id==0 && baskets[i].quantity>=2) {
@@ -42,6 +53,13 @@
         return false;
     };
 
+    /**
+     * get the discount
+     * @param qty
+     * @param price
+     * @param product
+     * @returns {number}
+     */
     var sumDiscount = function(qty, price, product){
         var i = 0;
         var total = 0;
@@ -56,6 +74,10 @@
         return total;
     };
 
+    /**
+     * map with the function for the discount
+     * @type {{1: arrayDiscount.1, 2: arrayDiscount.2}}
+     */
     var arrayDiscount = {1:function(index, product){
         if(product[index].id==1 && product[index].quantity>=4){
             var numberDiscount = parseInt(product[index].quantity/4);
@@ -71,6 +93,13 @@
         }
     } };
 
+
+    /**
+     * return the total for a product
+     * @param index
+     * @param baskets
+     * @returns {*}
+     */
     var sumTotal = function(index, baskets){
         if(baskets[index].id in arrayDiscount){
             return arrayDiscount[baskets[index].id](index, baskets)
@@ -79,6 +108,11 @@
         }
     };
 
+    /**
+     * get the quantity of bread in the basket
+     * @param baskets
+     * @returns {number}
+     */
     var getBreadQty = function(baskets){
         for(var i = 0; i < baskets.length; i++){
             if(baskets[i].id==0) {
@@ -87,6 +121,11 @@
         }
     };
 
+
+    /**
+     * update the total for all element in the basket
+     * @param baskets
+     */
     var updateSum = function(baskets){
         for(var i = 0; i < baskets.length; i++){
             baskets[i].total = sumTotal(i, baskets);
