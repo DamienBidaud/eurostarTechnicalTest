@@ -28,12 +28,19 @@
         }
     });
 
-
+    /**
+     * product controller
+     */
     basket.controller("productsCtrl",  ["$log", "$scope", "$http","baskets", function($log, $scope, $http, baskets){
         $scope.products = [];
         $scope.baskets = baskets;
         $scope.add = function(product){
-            $scope.baskets.push(product);
+            var index = $scope.baskets.indexOf(product);
+            if(index>=0){
+                $scope.baskets[index].quantity++;
+            }else{
+                $scope.baskets.push(product);
+            }
         };
 
         $http.get("resource/products.json").then(function(data){
@@ -44,6 +51,9 @@
         });
     }]);
 
+    /**
+     * basket controller
+     */
     basket.controller("basketCtrl", ["$scope", "$log","baskets", function($scope, $log, baskets){
         $scope.baskets = baskets;
 
