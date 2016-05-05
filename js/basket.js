@@ -136,6 +136,10 @@
             }
         };
 
+        $scope.removeProduct = function(index){
+            $scope.baskets.splice(index, 1);
+        };
+
         $scope.getTotal = function(){
             var total = 0;
             for (var i = 0; i < $scope.baskets.length;i++){
