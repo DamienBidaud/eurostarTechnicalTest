@@ -46,6 +46,14 @@
 
     basket.controller("basketCtrl", ["$scope", "$log","baskets", function($scope, $log, baskets){
         $scope.baskets = baskets;
+
+        $scope.addItem = function(){
+
+        };
+
+        $scope.removeItem = function(){
+
+        };
     }]);
 
 
