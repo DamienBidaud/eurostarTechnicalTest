@@ -1,0 +1,33 @@
+<div class="row"  ng-cloak>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6">
+                {{$ctrl.basket.name}}
+            </div>
+            <div class="col-md-6">
+                £{{$ctrl.basket.price|number:2}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                Quantity:{{$ctrl.basket.quantity}}
+            </div>
+            <div class="col-md-6">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default" ng-click="$ctrl.addItem()"><span class="glyphicon glyphicon-plus"></span></button>
+                    <button type="button" class="btn btn-default" ng-click="$ctrl.removeItem()"><span class="glyphicon glyphicon-minus"></span></button>
+                    <button type="button" class="btn btn-default" ng-click="$ctrl.removeProduct()"><span class="glyphicon glyphicon-trash"></span></button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                Total:
+            </div>
+            <div class="col-md-6">
+                £{{$ctrl.basket.total|number:2}}
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>
