@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-9">
         <b>{{$ctrl.product.name}}</b>
-        <p>£{{$ctrl.product.price}}</p>
+        <p>£{{$ctrl.product.price|number:2}}</p>
     </div>
     <div class="col-md-3">
         <button class="btn btn-default" ng-click="$ctrl.addProduct()">Add product</button>
