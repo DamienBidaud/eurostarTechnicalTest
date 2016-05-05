@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Eurostar technical test</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
     <div ng-app="basketApp" class="container">
@@ -14,7 +15,7 @@
             </div>
             <div ng-controller="basketCtrl" class="col-md-4">
                 <h3>My basket</h3>
-                <div class="row" ng-repeat="basket in baskets" ng-hide="baskets.length==0">
+                <div class="row" ng-repeat="basket in baskets" ng-cloak>
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-6">
@@ -36,14 +37,17 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
-                                Total=£{{basket.total|number:2}}
+                            <div class="col-md-6">
+                                Total:
+                            </div>
+                            <div class="col-md-6">
+                                £{{basket.total|number:2}}
                             </div>
                         </div>
                         <hr>
                     </div>
                 </div>
-                <div class="row" ng-if="baskets.length>0">
+                <div class="row" ng-if="baskets.length>0" ng-cloak>
                     <div class="col-md-6">
                         <b>Total:</b>
                     </div>
