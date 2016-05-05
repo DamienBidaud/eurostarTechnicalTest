@@ -17,6 +17,22 @@
         }
     };
 
+    var basketController = function(){
+        var ctrl = this;
+
+        ctrl.addItem = function(){
+            ctrl.onAdd();
+        };
+
+        ctrl.removeItem = function(){
+            ctrl.onRemove();
+        };
+
+        ctrl.removeProduct = function(){
+            ctrl.onDelete();
+        };
+    };
+
     var asBreadDiscount = function(baskets){
         for(var i = 0; i < baskets.length; i++){
             if(baskets[i].id==0 && baskets[i].quantity>=2) {
@@ -83,6 +99,17 @@
         bindings:{
             product:"<",
             onUpdate:"&"
+        }
+    });
+
+    basket.component("basket", {
+        templateUrl:"template/basket.html",
+        controller:basketController,
+        bindings:{
+            basket:"<",
+            onDelete:"&",
+            onRemove:"&",
+            onAdd:"&"
         }
     });
 
