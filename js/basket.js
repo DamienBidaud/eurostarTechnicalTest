@@ -26,34 +26,14 @@
         return false;
     };
 
-    var sumTotal = function(index, baskets){
-        if(baskets[index].id==1){
-            return milkDiscount(baskets[index]);
-        }else if(baskets[index].id==2){
-            return breadDiscount(index, baskets);
-        }else{
-            return baskets[index].quantity*baskets[index].price;
+    var arrayDiscount = {1:function(index, product){
+        console.log("ok");
+        if(product[index].id==1 && product[index].quantity>=4){
+            var numberDiscount = parseInt(product[index].quantity/4);
+            return (product[index].quantity-numberDiscount)*product[index].price;
         }
-    };
-
-
-    var milkDiscount = function(product){
-        if(product.id==1 && product.quantity>=4){
-            var numberDiscount = parseInt(product.quantity/4);
-            return (product.quantity-numberDiscount)*product.price;
-        }
-        return product.quantity*product.price;
-    };
-
-    var getBreadQty = function(baskets){
-        for(var i = 0; i < baskets.length; i++){
-            if(baskets[i].id==0) {
-                return baskets[i].quantity;
-            }
-        }
-    };
-
-    var breadDiscount = function(index, baskets){
+        return product[index].quantity*product[index].price;
+    },2:function(index, baskets){
         if(asBreadDiscount(baskets)){
             var qty = parseInt(getBreadQty(baskets)/2);
             var total = 0;
@@ -70,9 +50,24 @@
         }else{
             return baskets[index].quantity*baskets[index].price;
         }
+    } };
+
+    var sumTotal = function(index, baskets){
+        if(baskets[index].id in arrayDiscount){
+            return arrayDiscount[baskets[index].id](index, baskets)
+        } else{
+            return baskets[index].quantity*baskets[index].price;
+        }
     };
 
-
+    var getBreadQty = function(baskets){
+        for(var i = 0; i < baskets.length; i++){
+            if(baskets[i].id==0) {
+                return baskets[i].quantity;
+            }
+        }
+    };
+    
     var updateSum = function(baskets){
         for(var i = 0; i < baskets.length; i++){
             baskets[i].total = sumTotal(i, baskets);
