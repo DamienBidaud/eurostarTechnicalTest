@@ -9,7 +9,6 @@
         var ctrl = this;
 
         ctrl.addProduct = function(){
-            console.log("ok");
             ctrl.onUpdate();
         }
 
@@ -33,7 +32,6 @@
             $log.info(product);
             $scope.baskets.push(product);
             $log.info($scope.baskets);
-            $scope.$apply;
         };
 
         $http.get("resource/products.json").then(function(data){
@@ -45,7 +43,7 @@
     }]);
 
     basket.controller("basketCtrl", ["$scope", "$log", function($scope, $log){
-        $log.info($scope.baskets);
+        //$log.info($scope.baskets);
     }]);
 
 
