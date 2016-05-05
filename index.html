@@ -10,12 +10,13 @@
         <div class="row">
             <div ng-controller="productsCtrl" class="col-md-8">
                 <h3>Products</h3>
-                <div class="row">
-
-                </div>
+                <product ng-repeat="product in products" product="product" on-update="add(product)"></product>
             </div>
             <div ng-controller="basketCtrl" class="col-md-4">
                 <h3>My basket</h3>
+                <div class="row" ng-repeat="basket in baskets">
+                    <p>dskql</p>
+                </div>
             </div>
         </div>
     </div>

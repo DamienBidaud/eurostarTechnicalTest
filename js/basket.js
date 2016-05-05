@@ -5,15 +5,37 @@
 
     var basket = angular.module("basketApp", []);
 
+    var productController = function(){
+        var ctrl = this;
+
+        ctrl.addProduct = function(){
+            console.log("ok");
+            ctrl.onUpdate();
+        }
+
+
+    };
 
     basket.component("product", {
-        
+        templateUrl:"template/product.html",
+        controller:productController,
+        bindings:{
+            product:"<",
+            onUpdate:"&"
+        }
     });
 
 
     basket.controller("productsCtrl",  ["$log", "$scope", "$http", function($log, $scope, $http){
-        $log.info("ok");
         $scope.products = [];
+        $scope.baskets = [];
+        $scope.add = function(product){
+            $log.info(product);
+            $scope.baskets.push(product);
+            $log.info($scope.baskets);
+            $scope.$apply;
+        };
+
         $http.get("resource/products.json").then(function(data){
             $scope.products = data.data;
         }, function(response){
@@ -23,6 +45,8 @@
     }]);
 
     basket.controller("basketCtrl", ["$scope", "$log", function($scope, $log){
-        
-    }])
+        $log.info($scope.baskets);
+    }]);
+
+
 })();
