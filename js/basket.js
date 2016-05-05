@@ -19,6 +19,19 @@
 
     };
 
+    var asDiscount = function(baskets){
+        for(var i = 0; i < baskets; i++){
+            if(baskets[i].name==="Butter" && baskets[i].quantity%2==0){
+                return true;
+            }else if(baskets[i].name==="Milk" && baskets[i].quantity%3==0){
+                return true;
+            }
+        }
+        return false;
+    };
+
+
+
     basket.component("product", {
         templateUrl:"template/product.html",
         controller:productController,
