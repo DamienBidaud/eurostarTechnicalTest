@@ -19,34 +19,37 @@
 
     var asBreadDiscount = function(baskets){
         for(var i = 0; i < baskets.length; i++){
-            if(baskets[i].id==0 && baskets[i].quantity%2==0) {
+            if(baskets[i].id==0 && baskets[i].quantity>=2) {
                 return true;
             }
         }
         return false;
     };
 
+    var sumDiscount = function(qty, price, product){
+        var i = 0;
+        var total = 0;
+        while(i < product.quantity){
+            if(i < qty){
+                total +=price;
+            }else{
+                total += product.price;
+            }
+            i++;
+        }
+        return total;
+    };
+
     var arrayDiscount = {1:function(index, product){
-        console.log("ok");
         if(product[index].id==1 && product[index].quantity>=4){
             var numberDiscount = parseInt(product[index].quantity/4);
-            return (product[index].quantity-numberDiscount)*product[index].price;
+            return sumDiscount(numberDiscount, 0, product[index]);
         }
         return product[index].quantity*product[index].price;
     },2:function(index, baskets){
         if(asBreadDiscount(baskets)){
             var qty = parseInt(getBreadQty(baskets)/2);
-            var total = 0;
-            var i=0;
-            while(i < baskets[index].quantity){
-                if(i < qty){
-                    total+=baskets[index].price/2;
-                }else{
-                    total+=baskets[index].price;
-                }
-                i++;
-            }
-            return total;
+            return sumDiscount(qty, baskets[index].price/2, baskets[index]);
         }else{
             return baskets[index].quantity*baskets[index].price;
         }
@@ -67,7 +70,7 @@
             }
         }
     };
-    
+
     var updateSum = function(baskets){
         for(var i = 0; i < baskets.length; i++){
             baskets[i].total = sumTotal(i, baskets);
